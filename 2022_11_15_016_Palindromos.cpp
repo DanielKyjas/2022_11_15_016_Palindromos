@@ -7,10 +7,10 @@
 #include<cstdlib>
 #include<string>
 
-bool palindromo(char palabra[], int  inicio, int final) {
-	if (inicio >= final) return true;
-	if (palabra[inicio] == palabra[final])
-		palindromo(palabra, inicio + 1, final - 1);
+bool palindromo(char palabra[], int  prim, int ult) {
+	if (prim >= ult) return true;
+	if (palabra[prim] == palabra[ult])
+		palindromo(palabra, prim + 1, ult - 1);
 	else return false;
 }
 
@@ -18,16 +18,16 @@ int main(void)
 {
 	std::string palabra;
 	int size;
-	bool pal;
+	bool palin;
 
 	std::cout << "dime una palabra\n";
 	std::cin >> palabra;
 	char* c = const_cast<char*>(palabra.c_str());
 	size = strlen(c);
 
-	pal = palindromo(c, 0, size - 1);
+	palin= palindromo(c, 0, size - 1);
 
-	if (pal == true) {
+	if (palin == true) {
 		std::cout << "la palabra es un palindromo" << std::endl;
 	}
 	else {
