@@ -1,25 +1,36 @@
-// 2022_11_15_016_Palindromos.cpp 
+// 2022_11_15_Palindromo.cpp
 // Daniel Callejas Rayón
-// Palindromos con recursividd
+// programa que te diga si una palabra es un palindormos con recursividad
+//
 
-//Daniel Callejas Rayón
-// ver recursividad
 #include <iostream>
-#include <string>
-void pali(char letra)
-{
-    if (letra == "")
-    {
-        pali(letra / 2);
-        std::cout << letra % 2;
-    }
+#include<cstdlib>
+#include<string>
+
+bool palindromo(char palabra[], int  inicio, int final) {
+	if (inicio >= final) return true;
+	if (palabra[inicio] == palabra[final])
+		palindromo(palabra, inicio + 1, final - 1);
+	else return false;
 }
 
-int main()
+int main(void)
 {
-    std::string  palindromo;
-    std::cout << "Dame la frase para verificar que sea un palindromo: \n";
-    std::getline(std::cin, palindromo);
-    char* c = const_cast<char*>(palindromo.c_str());
-    std::cout << c << std::endl; 
+	std::string palabra;
+	int size;
+	bool pal;
+
+	std::cout << "dime una palabra\n";
+	std::cin >> palabra;
+	char* c = const_cast<char*>(palabra.c_str());
+	size = strlen(c);
+
+	pal = palindromo(c, 0, size - 1);
+
+	if (pal == true) {
+		std::cout << "la palabra es un palindromo" << std::endl;
+	}
+	else {
+		std::cout << "la palabra no es un palindromo " << std::endl;
+	}
 }
